@@ -1,0 +1,17 @@
+{
+    "name": "jessegall/laravel-lightspeed-sdk",
+    "autoload": {
+        "psr-4": {
+            "JesseGall\\LightspeedSDK\\Laravel\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jesse Gall",
+            "email": "jesse-gall@hotmail.com"
+        }
+    ],
+    "require": {
+        "jessegall/lightspeed-sdk": "^0.0.2"
+    }
+}

@@ -2,10 +2,10 @@
 
 namespace JesseGall\LightspeedSDK\Laravel\Tests;
 
-use Illuminate\Support\Env;
+use JesseGall\LightspeedSDK\Api;
+use JesseGall\LightspeedSDK\Laravel\CacheHandler;
 use JesseGall\LightspeedSDK\Laravel\Providers\LightspeedSDKServiceProvider;
 use JesseGall\LightspeedSDK\LightspeedSDK;
-use Orchestra\Testbench\Concerns\CreatesApplication;
 
 class LightspeedSDKServiceProviderTest extends TestCase
 {
@@ -24,9 +24,14 @@ class LightspeedSDKServiceProviderTest extends TestCase
         $this->provider->boot();
     }
 
-    public function test_sdk_properties_are_set()
+    public function test_api_credentials_are_set()
     {
         $sdk = LightspeedSDK::instance();
+
+        $this->assertNotNull($sdk->get('api.server'));
+        $this->assertNotNull($sdk->get('api.key'));
+        $this->assertNotNull($sdk->get('api.secret'));
+        $this->assertNotNull($sdk->get('api.language'));
 
         $this->assertEquals(env('LIGHTSPEED_API_SERVER'), $sdk->get('api.server'));
         $this->assertEquals(env('LIGHTSPEED_API_KEY'), $sdk->get('api.key'));
@@ -34,5 +39,9 @@ class LightspeedSDKServiceProviderTest extends TestCase
         $this->assertEquals(env('LIGHTSPEED_API_LANGUAGE'), $sdk->get('api.language'));
     }
 
+    public function test_cache_handler_is_set()
+    {
+        $this->assertInstanceOf(CacheHandler::class, Api::getCacheHandler());
+    }
 
 }

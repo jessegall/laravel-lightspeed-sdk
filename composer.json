@@ -1,11 +1,6 @@
 {
     "name": "jessegall/laravel-lightspeed-sdk",
-    "repositories": [
-        {
-            "type": "path",
-            "url": "/Users/jessegall/Projects/lightspeed-sdk"
-        }
-    ],
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "JesseGall\\LightspeedSDK\\Laravel\\": "src/"

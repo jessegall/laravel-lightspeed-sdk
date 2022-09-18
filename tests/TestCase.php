@@ -3,6 +3,7 @@
 namespace JesseGall\LightspeedSDK\Laravel\Tests;
 
 use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
+use JesseGall\LightspeedSDK\Laravel\CacheHandler;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 class TestCase extends BaseTestCase
@@ -27,6 +28,9 @@ class TestCase extends BaseTestCase
         $app->config->set('lightspeed.api.key', env('LIGHTSPEED_API_KEY'));
         $app->config->set('lightspeed.api.secret', env('LIGHTSPEED_API_SECRET'));
         $app->config->set('lightspeed.api.language', env('LIGHTSPEED_API_LANGUAGE'));
+
+        $app->config->set('lightspeed.cache.enabled', true);
+        $app->config->set('lightspeed.cache.handler', CacheHandler::class);
     }
 
 }
